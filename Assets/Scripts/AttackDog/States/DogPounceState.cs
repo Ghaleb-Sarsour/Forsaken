@@ -28,12 +28,13 @@ public class DogPounceState : State
     }
     public override void ExitState()
     {
-        dogContext.InAttack = false;
+        //dogContext.InAttack = false;
+        dogContext.OnGround = true;
     }
 
     public override void CheckSwitchStates()
     {
-        if (dogContext.OnGround)
+        if (dogContext.InAttack == false)
         {
             SwitchState(new DogStunState(dogContext));
         }
